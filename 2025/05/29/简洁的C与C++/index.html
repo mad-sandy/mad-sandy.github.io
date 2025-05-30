@@ -1,227 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" color-mode="light">
 
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="John Doe">
-
-
-
-
-
-<title>clear C and C++ | Hexo</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="John Doe" />
+  <!-- Open Graph Description 简短摘要-->
+  
+  <!-- 用于搜索引擎的文章摘要 -->
+  
+  
+  
+  <title>
     
-    <link rel="stylesheet" href="/css/style.css">
+      clear C and C++ 
+      
+      
+      |
     
+     Hexo
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
 
 
+  
 
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
+  
 
-
-
-    
-    
-        
-    
-
-
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const pagebody = document.getElementsByTagName('body')[0]
 
-            function setTheme(status) {
-
-                if (status === 'dark') {
-                    window.sessionStorage.theme = 'dark'
-                    pagebody.classList.add('dark-theme');
-
-                } else if (status === 'light') {
-                    window.sessionStorage.theme = 'light'
-                    pagebody.classList.remove('dark-theme');
-                }
-            };
-
-            setTheme(window.sessionStorage.theme)
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                <a class="menu-item" href="/archives">Posts</a>
-                
-                <a class="menu-item" href="/category">Categories</a>
-                
-                <a class="menu-item" href="/tag">Tags</a>
-                
-                <a class="menu-item" href="/about">About</a>
-                
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">
-                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M4.5 17.27q-.213 0-.356-.145T4 16.768t.144-.356t.356-.143h15q.213 0 .356.144q.144.144.144.357t-.144.356t-.356.143zm0-4.77q-.213 0-.356-.144T4 11.999t.144-.356t.356-.143h15q.213 0 .356.144t.144.357t-.144.356t-.356.143zm0-4.77q-.213 0-.356-.143Q4 7.443 4 7.23t.144-.356t.356-.143h15q.213 0 .356.144T20 7.23t-.144.356t-.356.144z"/></svg>
-                    <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Material Symbols Light by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="m12 12.708l-5.246 5.246q-.14.14-.344.15t-.364-.15t-.16-.354t.16-.354L11.292 12L6.046 6.754q-.14-.14-.15-.344t.15-.364t.354-.16t.354.16L12 11.292l5.246-5.246q.14-.14.345-.15q.203-.01.363.15t.16.354t-.16.354L12.708 12l5.246 5.246q.14.14.15.345q.01.203-.15.363t-.354.16t-.354-.16z"/></svg>
-                </div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                <a class="menu-item" href="/archives">Posts</a>
-                
-                <a class="menu-item" href="/category">Categories</a>
-                
-                <a class="menu-item" href="/tag">Tags</a>
-                
-                <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if (toggleMenu.classList.contains("active")) {
-            toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        } else {
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Oranges</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
 </div>
 
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
 
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
     }
+  </script>
 
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
 
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
 
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
 
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
 
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
+  <!-- clipboard -->
 
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">clear C and C++</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">John Doe</a>
-                    
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
 
-                    
-                        <span class="post-time">
-                        Date: <a href="#">May 29, 2025&nbsp;&nbsp;10:56:44</a>
-                        </span>
-                    
-                    
-                </div>
-            
-        </header>
 
-        <div class="post-content">
-            <h1 id="简洁的C及C"><a href="#简洁的C及C" class="headerlink" title="简洁的C及C++"></a>简洁的C及C++</h1><p><a target="_blank" rel="noopener" href="https://codelearn.club/">海洋饼干叔叔</a>		发布于：2020年9月13日		<a target="_blank" rel="noopener" href="http://codelearn.club/2020/09/C-CppBook/">C&#x2F;C++</a></p>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">clear C and C++</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2025-05-29 17:56:07
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <h1 id="简洁的C及C"><a href="#简洁的C及C" class="headerlink" title="简洁的C及C++"></a>简洁的C及C++</h1><p><a target="_blank" rel="noopener" href="https://codelearn.club/">海洋饼干叔叔</a>		发布于：2020年9月13日		<a target="_blank" rel="noopener" href="http://codelearn.club/2020/09/C-CppBook/">C&#x2F;C++</a></p>
 <hr>
 <p>新冠病毒肆虐，困在宜昌，不知道做什么好，那就开始写书吧。</p>
 <p>―――　2020年1月31日星期五</p>
@@ -6471,69 +6412,344 @@
 <p>第25 ~ 27行：将一个元素类型为整数的双端队列传递给evenRemover( )函数，执行结果的第3 ~ 4行证实，容器内的全部偶数被删除。</p>
 <p>这个示例程序进一步证实，通过模板参数，以及迭代器，evenRemover( )函数和output( )函数均具备泛型程序设计的特征，它可以在不同的容器上完成相同的功能。</p>
 
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2025-05-29 17:56:07
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2025/05/29/%E9%BB%91%E8%89%B2%E7%9A%84%E6%96%B9%E5%9D%97/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
         </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E6%B4%81%E7%9A%84C%E5%8F%8AC"><span class="toc-text">简洁的C及C++</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87"><span class="toc-text">1. 学习准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-C%E5%8F%8AC-%E7%AE%80%E5%8F%B2"><span class="toc-text">1.1 C及C++简史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86"><span class="toc-text">1.2 计算机原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.3 内存模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-text">1.4 编译器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-Qt%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-text">1.5 Qt集成开发环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95"><span class="toc-text">1.6 学习方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%98%E9%87%8F%E5%8F%8A%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">2. 变量及简单数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Hello-World"><span class="toc-text">2.1 Hello World</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%8F%98%E9%87%8F"><span class="toc-text">2.2 变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.3 简单数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.3.1 字符类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.3.2 整数类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.3.3 浮点数类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-4-%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.3.4 布尔类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D"><span class="toc-text">2.4 变量命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="toc-text">2.5 字面量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-%E6%95%B4%E6%95%B0"><span class="toc-text">2.5.1 整数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-2-%E5%AD%97%E7%AC%A6%E5%8F%8A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">2.5.2 字符及字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-3-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">2.5.3 浮点数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%AE%9E%E8%B7%B5-%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC"><span class="toc-text">微实践 - 鸡兔同笼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="toc-text">3. 语法基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%BA%90%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F"><span class="toc-text">3.1 源代码格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%BA%90%E4%BB%A3%E7%A0%81%E7%AC%A6%E5%8F%B7"><span class="toc-text">3.2 源代码符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">3.3 操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E5%A4%8D%E5%90%88%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">3.3.1 复合操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E6%B1%82%E6%A8%A1%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">3.3.2 求模操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-3-%E6%AF%94%E8%BE%83%E4%B8%8E%E9%80%BB%E8%BE%91"><span class="toc-text">3.3.3 比较与逻辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-5-%E8%B5%8B%E5%80%BC%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">3.3.5 赋值操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-6-%E9%80%92%E5%A2%9E%E4%B8%8E%E9%80%92%E5%87%8F"><span class="toc-text">3.3.6 递增与递减</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-7-%E9%80%97%E5%8F%B7%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">3.3.7 逗号操作符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E8%BF%90%E7%AE%97%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">3.4 运算优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">3.5 隐式类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-1-%E8%B5%8B%E5%80%BC-%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">3.5.1 赋值&#x2F;变量初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-2-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">3.5.2 表达式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E6%98%BE%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">3.6 显式类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">3.7 使用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%AE%9E%E8%B7%B5-%E5%9C%B0%E7%90%83%E6%97%B6%E9%97%B4"><span class="toc-text">微实践 - 地球时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="toc-text">3.8 自定义函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-%E5%9C%B0%E5%9D%80"><span class="toc-text">3.9 地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5"><span class="toc-text">3.10 获取用户输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-10-1-C"><span class="toc-text">3.10.1 C</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-10-2-C"><span class="toc-text">3.10.2 C++</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-11-%E5%B8%B8%E9%87%8F"><span class="toc-text">3.11 常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-12-%E6%B3%A8%E9%87%8A"><span class="toc-text">3.12 注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%AE%9E%E8%B7%B5-%E5%93%88%E5%88%A9%E6%B3%A2%E7%89%B9%E4%B9%8B%E5%BF%83%E7%81%B5%E6%84%9F%E5%BA%94"><span class="toc-text">微实践 - 哈利波特之心灵感应</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%86%E6%94%AF%E4%B8%8E%E5%BE%AA%E7%8E%AF"><span class="toc-text">4. 分支与循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-if-else%E8%AF%AD%E5%8F%A5"><span class="toc-text">4.1 if else语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%A4%9A%E5%88%86%E6%94%AF%E9%80%89%E6%8B%A9"><span class="toc-text">4.2 多分支选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-for%E5%BE%AA%E7%8E%AF"><span class="toc-text">4.3 for循环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-%E4%BC%A0%E7%BB%9Ffor%E5%BE%AA%E7%8E%AF"><span class="toc-text">4.3.1 传统for循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2-%E5%9F%BA%E4%BA%8E%E8%8C%83%E5%9B%B4%E7%9A%84for%E5%BE%AA%E7%8E%AF"><span class="toc-text">4.3.2 基于范围的for循环</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%AE%9E%E8%B7%B5-%E8%B4%A8%E6%95%B0%E5%88%A4%E5%AE%9A"><span class="toc-text">微实践 - 质数判定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-break%E8%AF%AD%E5%8F%A5"><span class="toc-text">4.4 break语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-continue%E8%AF%AD%E5%8F%A5"><span class="toc-text">4.5 continue语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%AE%9E%E8%B7%B5-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95"><span class="toc-text">微实践 - 程序的断点调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-while%E5%BE%AA%E7%8E%AF"><span class="toc-text">4.6 while循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%AE%9E%E8%B7%B5-%E4%B9%9D%E5%B1%82%E4%B9%8B%E5%8F%B0%EF%BC%8C%E8%B5%B7%E4%BA%8E%E7%B4%AF%E5%9C%9F"><span class="toc-text">微实践 - 九层之台，起于累土</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-do-while%E5%BE%AA%E7%8E%AF"><span class="toc-text">4.7 do while循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-8-switch%E5%88%86%E6%94%AF"><span class="toc-text">4.8 switch分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-9-goto%E8%AF%AD%E5%8F%A5"><span class="toc-text">4.9 goto语句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%95%B0%E7%BB%84%E5%8F%8A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5. 数组及字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">5.1 一维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%85%83%E7%B4%A0%E7%9A%84%E4%B8%8B%E6%A0%87%E8%AE%BF%E9%97%AE"><span class="toc-text">5.2 元素的下标访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E6%95%B0%E7%BB%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">5.3 数组初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95-%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE"><span class="toc-text">算法 - 折半查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">算法 - 冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-C%E9%A3%8E%E6%A0%BC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.4 C风格字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-1-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-text">5.4.1 字符数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%90%E7%AE%97"><span class="toc-text">5.4.2 字符串运算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-C-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.5 C++字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">5.6 二维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95-%E7%9F%A9%E9%98%B5%E4%B9%98%E7%A7%AF%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="toc-text">算法 - 矩阵乘积的计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7-%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">5.7 多维数组*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%8C%87%E9%92%88%E5%8F%8A%E5%BC%95%E7%94%A8"><span class="toc-text">6. 指针及引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E6%8C%87%E9%92%88"><span class="toc-text">6.1 指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-text">6.2 空指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E6%8C%87%E9%92%88%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8"><span class="toc-text">6.3 指针的简单应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84"><span class="toc-text">6.4 指针与数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97"><span class="toc-text">6.5 指针运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-6-%E6%8C%87%E5%90%91%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-text">6.6 指向指针的指针*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-7-main%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-text">6.7 main函数的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-8-%E6%8C%87%E9%92%88%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="toc-text">6.8 指针与常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-9-%E5%BC%95%E7%94%A8"><span class="toc-text">6.9 引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-10-%E5%BC%95%E7%94%A8%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="toc-text">6.10 引用与函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%BD%E8%B1%A1"><span class="toc-text">7. 函数与抽象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E6%8A%BD%E8%B1%A1%E7%9A%84%E5%A8%81%E5%8A%9B"><span class="toc-text">7.1 抽象的威力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">7.2 函数的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">7.3 函数与一维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">7.4 函数与二维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">7.5 变量的作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-%E9%80%92%E5%BD%92"><span class="toc-text">7.6 递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95-%E4%B8%80%E5%AF%B9%E5%85%94%E5%85%94%E4%B8%8E%E5%87%BD%E6%95%B0%E7%9A%84%E5%A2%9E%E9%95%BF"><span class="toc-text">算法 - 一对兔兔与函数的增长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">算法 - 归并排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95-%E6%B1%89%E8%AF%BA%E5%A1%94"><span class="toc-text">算法 - 汉诺塔</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%B1%82%E8%A7%A3"><span class="toc-text">1). 求解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95"><span class="toc-text">2). 递归算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="toc-text">3). 计算复杂性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">7.7 函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-8-%E9%BB%98%E8%AE%A4%E5%80%BC%E5%8F%82%E6%95%B0"><span class="toc-text">7.8 默认值参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-9-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0"><span class="toc-text">7.9 内联函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-10-%E5%87%BD%E6%95%B0%E5%90%8D%E9%87%8D%E8%BD%BD"><span class="toc-text">7.10 函数名重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-11-%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0"><span class="toc-text">7.11 模板函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-12-decltype%E5%A3%B0%E6%98%8E%E7%B1%BB%E5%9E%8B"><span class="toc-text">7.12 decltype声明类型**</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-13-%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%95%B0%E9%87%8F%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-text">7.13 不确定数量的参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">8. 内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-stack%E6%A0%88"><span class="toc-text">8.1 stack栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-heap%E5%A0%86"><span class="toc-text">8.2 heap堆</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-1-%E5%8D%95%E4%B8%AA%E5%A0%86%E5%AF%B9%E8%B1%A1"><span class="toc-text">8.2.1 单个堆对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-2-%E5%A0%86%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84"><span class="toc-text">8.2.2 堆对象数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1"><span class="toc-text">8.3 静态对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-%E5%AD%98%E5%82%A8%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E%E7%AC%A6"><span class="toc-text">8.4 存储类型说明符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E4%BD%8D%E6%93%8D%E4%BD%9C"><span class="toc-text">9. 位操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8F%8A%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="toc-text">9.1 二进制及十六进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-%E6%8C%89%E4%BD%8D%E5%8F%96%E5%8F%8D"><span class="toc-text">9.2 按位取反</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-%E6%8C%89%E4%BD%8D%E4%B8%8E"><span class="toc-text">9.3 按位与</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-%E6%8C%89%E4%BD%8D%E6%88%96"><span class="toc-text">9.4 按位或</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-5-%E6%8C%89%E4%BD%8D%E5%BC%82%E6%88%96"><span class="toc-text">9.5 按位异或*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-6-%E5%B7%A6%E7%A7%BB%E4%BD%8D"><span class="toc-text">9.6 左移位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-7-%E5%8F%B3%E7%A7%BB%E4%BD%8D"><span class="toc-text">9.7 右移位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-8-%E7%BD%AE%E4%BD%8D%E4%B8%8E%E5%A4%8D%E4%BD%8D"><span class="toc-text">9.8 置位与复位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%AE%9E%E8%B7%B5-%E5%9C%B0%E9%93%81%E8%83%BD%E5%A4%9F%E5%85%B3%E9%97%A8%E4%BA%86%E5%90%97%EF%BC%9F"><span class="toc-text">微实践 - 地铁能够关门了吗？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%9E%9A%E4%B8%BE%E4%B8%8E%E8%81%94%E5%90%88"><span class="toc-text">10. 枚举与联合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-%E6%9E%9A%E4%B8%BE%E5%9E%8B"><span class="toc-text">10.1 枚举型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-typedef%E8%AF%AD%E5%8F%A5"><span class="toc-text">10.2 typedef语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-%E6%9E%9A%E4%B8%BE%E7%B1%BB"><span class="toc-text">10.3 枚举类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-%E8%81%94%E5%90%88"><span class="toc-text">10.4 联合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E7%BB%93%E6%9E%84"><span class="toc-text">11. 结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="toc-text">11.1 结构定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-%E7%BB%93%E6%9E%84%E5%AF%B9%E8%B1%A1"><span class="toc-text">11.2 结构对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-%E5%A4%8D%E5%90%88%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="toc-text">11.3 复合字面量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-4-%E7%BB%93%E6%9E%84%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84"><span class="toc-text">11.4 结构对象数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-%E7%BB%93%E6%9E%84%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-text">11.5 结构的嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-6-%E6%9F%94%E6%80%A7%E6%95%B0%E7%BB%84%E6%88%90%E5%91%98"><span class="toc-text">11.6 柔性数组成员**</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E7%BC%96%E8%AF%91%E5%8F%8A%E6%9E%84%E5%BB%BA"><span class="toc-text">12. 编译及构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E7%B1%BB%E4%B8%8E%E6%8A%BD%E8%B1%A1"><span class="toc-text">13. 类与抽象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">13.1 面向对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-2-%E5%88%9B%E5%BB%BA%E7%B1%BB"><span class="toc-text">13.2 创建类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-3-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-text">13.3 创建对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-4-%E5%86%85%E5%AD%98%E6%95%85%E4%BA%8B"><span class="toc-text">13.4 内存故事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-5-%E9%9A%90%E8%97%8F%E7%9A%84this%E6%8C%87%E9%92%88"><span class="toc-text">13.5 隐藏的this指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-6-%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-text">13.6 析构函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-7-%E5%8A%A8%E6%80%81%E5%AF%B9%E8%B1%A1"><span class="toc-text">13.7 动态对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-8-%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84"><span class="toc-text">13.8 对象数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E9%9A%90%E8%97%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">14. 隐藏的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#14-1-%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%B0%81%E8%A3%85"><span class="toc-text">14.1 接口与封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-2-%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-text">14.2 访问控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-3-%E6%A0%87%E5%87%86%E7%B1%BB%E5%AE%9E%E7%8E%B0"><span class="toc-text">14.3 标准类实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-4-%E5%8F%8B%E5%85%83"><span class="toc-text">14.4 友元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-5-%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98"><span class="toc-text">14.5 静态数据成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-6-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-text">14.6 静态成员函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%AE%9E%E8%B7%B5-%E5%8D%95%E4%BB%B6%E6%A8%A1%E5%BC%8F"><span class="toc-text">微实践 - 单件模式**</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-7-%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-text">14.7 常量成员函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8"><span class="toc-text">15. 代码复用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#15-1-%E4%B8%87%E7%89%A9%E7%9A%86%E5%AF%B9%E8%B1%A1"><span class="toc-text">15.1 万物皆对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-2-%E7%BB%84%E5%90%88"><span class="toc-text">15.2 组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-3-%E7%BB%A7%E6%89%BF"><span class="toc-text">15.3 继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-4-%E5%85%AC%E6%9C%89%E7%A7%81%E6%9C%89%E5%8F%8A%E4%BF%9D%E6%8A%A4%E7%BB%A7%E6%89%BF"><span class="toc-text">15.4 公有私有及保护继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-5-%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF"><span class="toc-text">15.5 多重继承**</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-%E5%AF%B9%E8%B1%A1"><span class="toc-text">16. 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#16-1-%E8%B5%8B%E5%80%BC%E4%B8%8E%E4%BC%A0%E5%80%BC"><span class="toc-text">16.1 赋值与传值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-2-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0"><span class="toc-text">16.2 拷贝构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-3-%E9%BB%98%E8%AE%A4%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">16.3 默认拷贝构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-4-%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="toc-text">16.4 深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-5-%E7%A7%81%E6%9C%89%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">16.5 私有拷贝构造函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">17. 操作符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#17-1-%E5%A4%8D%E6%95%B0%E7%B1%BB"><span class="toc-text">17.1 复数类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-2-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">17.2 +操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-3"><span class="toc-text">17.3 &lt;&lt;操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-4-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">17.4 &#x3D;操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-5-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">17.5 构造函数类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-6-UserString%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="toc-text">17.6 UserString的深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-7-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">17.7 ++操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-8-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-text">17.8 智能指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-9-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">17.9 智能指针的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-10-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">17.10 [ ]操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-11-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%87%BD%E6%95%B0"><span class="toc-text">17.11 类型转换操作符函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-%E5%A4%9A%E6%80%81"><span class="toc-text">18. 多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#18-1-%E6%97%A9%E7%BB%91%E5%AE%9A"><span class="toc-text">18.1 早绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-2-%E8%99%9A%E5%87%BD%E6%95%B0%E5%8F%8A%E6%99%9A%E7%BB%91%E5%AE%9A"><span class="toc-text">18.2 虚函数及晚绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-3-%E6%99%9A%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86"><span class="toc-text">18.3 晚绑定原理*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-4-%E8%BF%90%E8%A1%8C%E6%97%B6%E7%B1%BB%E5%9E%8B%E8%AF%86%E5%88%AB"><span class="toc-text">18.4 运行时类型识别*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-5-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">18.5 类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#18-5-1-static-cast"><span class="toc-text">18.5.1 static_cast</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-5-2-const-cast"><span class="toc-text">18.5.2 const_cast</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-5-3-reinterpret-cast"><span class="toc-text">18.5.3 reinterpret_cast</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-5-4-dynamic-cast"><span class="toc-text">18.5.4 dynamic_cast*</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-6-%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E5%8F%8A%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text">18.6 纯虚函数及抽象类*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-7-%E5%A4%9A%E6%80%81%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B"><span class="toc-text">18.7 多态应用举例*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-%E5%AE%B9%E5%99%A8%E4%B8%8E%E6%A8%A1%E6%9D%BF"><span class="toc-text">19. 容器与模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#19-1-%E5%90%91%E9%87%8F"><span class="toc-text">19.1 向量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-2-%E5%90%91%E9%87%8F%E7%9A%84%E7%94%9F%E9%95%BF"><span class="toc-text">19.2 向量的生长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-3-%E6%A8%A1%E6%9D%BF%E6%95%B0%E7%BB%84"><span class="toc-text">19.3 模板数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-4-%E6%95%B0%E7%BB%84%E4%B8%8E%E9%93%BE%E8%A1%A8"><span class="toc-text">19.4 数组与链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-5-%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">19.5 迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#19-5-1-%E8%8E%B7%E5%8F%96%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">19.5.1 获取迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-5-2-%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%AE%97%E6%9C%AF"><span class="toc-text">19.5.2 迭代器算术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-5-3-%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E7%A4%BA%E4%BE%8B"><span class="toc-text">19.5.3 折半查找示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-5-4-%E5%AE%B9%E5%99%A8%E5%85%83%E7%B4%A0%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-text">19.5.4 容器元素的修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-5-5-%E5%AE%B9%E5%99%A8%E5%85%83%E7%B4%A0%E7%9A%84%E5%A2%9E%E5%8A%A0"><span class="toc-text">19.5.5 容器元素的增加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-5-6-%E5%AE%B9%E5%99%A8%E5%85%83%E7%B4%A0%E7%9A%84%E5%88%A0%E9%99%A4"><span class="toc-text">19.5.6 容器元素的删除</span></a></li></ol></li></ol></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
 
         
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>John Doe</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="http://example.com/2025/05/29/%E7%AE%80%E6%B4%81%E7%9A%84C%E4%B8%8EC++/">http://example.com/2025/05/29/%E7%AE%80%E6%B4%81%E7%9A%84C%E4%B8%8EC++/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-                     <p class="copyright-item">
-                         <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY</strong>?</span>
-                     </p>
-                
-
-            </section>
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          
+              <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+                <i class="iconfont icon-github"></i>
+              </a>
+              
+        </li>
         
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2025/05/29/%E9%BB%91%E8%89%B2%E7%9A%84%E6%96%B9%E5%9D%97/">black cube</a>
-            
-            
-        </section>
-
-
-    </article>
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2025 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
 </div>
 
-            </div>
-            <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© John Doe | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
-    </div>
-</footer>
+      </div>
 
-    </div>
-</body>
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
 
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + clear%20C%20and%20C%2B%2B + '&url=' + http%3A%2F%2Fexample.com%2F2025%2F05%2F29%2F%25E7%25AE%2580%25E6%25B4%2581%25E7%259A%2584C%25E4%25B8%258EC%2B%2B%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2025/05/29/%E7%AE%80%E6%B4%81%E7%9A%84C%E4%B8%8EC++/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
 </html>

@@ -13,6 +13,11 @@
   
   <title>
     
+      About 
+      
+      
+      |
+    
      Hexo
   </title>
 
@@ -103,69 +108,55 @@
 
 
       <div class="flex-container">
-        <div class="container index">
-  <div class="post-list">
-    <!-- 遍历渲染文章 -->
-    
-      <div class="post-item" title="如何将大象装进冰箱">
-        <div class="time-m-d">2025-05-29</div>
-        <div class="title">
-          <a href="/2025/05/29/%E5%A6%82%E4%BD%95%E5%B0%86%E5%A4%A7%E8%B1%A1%E8%A3%85%E5%86%B0%E7%AE%B1/">
-            
-              
-                <span>如何将大象装进冰箱</span>
-              
-            
-          </a>
-        </div>
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <!-- 关于页 url形式：https://yoursite/about/ -->
+    <div class="container about-index">
+      <div class="markdown-body">
+        
       </div>
-    
-      <div class="post-item" title="latex 使用范例">
-        <div class="time-m-d">2025-05-29</div>
-        <div class="title">
-          <a href="/2025/05/29/LaTeX%E7%A4%BA%E4%BE%8B%E6%96%87%E6%A1%A3/">
-            
-              
-                <span>latex 使用范例</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="黑色的方块">
-        <div class="time-m-d">2025-05-29</div>
-        <div class="title">
-          <a href="/2025/05/29/%E9%BB%91%E8%89%B2%E7%9A%84%E6%96%B9%E5%9D%97/">
-            
-              
-                <span>黑色的方块</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="clear C and C++">
-        <div class="time-m-d">2025-05-29</div>
-        <div class="title">
-          <a href="/2025/05/29/%E7%AE%80%E6%B4%81%E7%9A%84C%E4%B8%8EC++/">
-            
-              
-                <span>clear C and C++</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-  </div>
-  <nav class="post-navigation">
-    
-    <span class="page-num">1 / 1</span>
-    
-  </nav>
-</div>
+    </div>
+  
+
+  
 
         
 <div class="footer">
@@ -422,6 +413,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + about + '&url=' + http%3A%2F%2Fexample.com%2Fabout%2Findex.html + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/about/index.html" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
